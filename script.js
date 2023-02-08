@@ -1,5 +1,5 @@
 var element = [
-  "hydogen",
+  "hydrogen",
   "helium",
   "lithium",
   "beryllium",
@@ -27,18 +27,19 @@ var element = [
   "iron",
 ];
 var atomicNumber = [
-  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
+  1, 2 ,3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
   23, 24, 25, 26,
 ];
 
 var randomNumber;
 function randomNumbers() {
-  randomNumber = Math.floor(Math.random() * 20 + 1);
+  randomNumber = Math.floor(Math.random() * atomicNumber.length );
   return randomNumber;
 }
-var random = randomNumbers();
+
 var value;
 var innerNumber = $("#atomic-number").text(atomicNumber[randomNumbers()]);
+console.log(element[randomNumber]);
 
 // FOR SUBMIT BUTTON CLICK
 $("#submit").on("click", function () {
@@ -46,8 +47,48 @@ $("#submit").on("click", function () {
 
   if (value == element[randomNumber]) {
     alert("Correct😊👌");
+    element.splice(randomNumber, 1);
+    atomicNumber.splice(randomNumber, 1);
+
+    if  (atomicNumber.length == 0 ) {
+      element = [
+        "hydrogen",
+        "helium",
+        "lithium",
+        "beryllium",
+        "boron",
+        "carbon",
+        "nitrogen",
+        "oxygen",
+        "fluorine",
+        "neon",
+        "sodium",
+        "magnesium",
+        "aluminium",
+        "silicon",
+        "phosphorus",
+        "sulphur",
+        "chlorine",
+        "argon",
+        "potassium",
+        "calcium",
+        "scandium",
+        "titanium",
+        "vanadium",
+        "chromium",
+        "manganese",
+        "iron",
+      ];
+      atomicNumber = [
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+        22, 23, 24, 25, 26,
+      ];
+    }
+
     innerNumber = $("#atomic-number").text(atomicNumber[randomNumbers()]);
     document.getElementById("type-name").value = "";
+
+    // random = Math.floor(Math.random() * atomicNumber.length + 1);
   } else {
     alert("Wrong 😱. Now train for another 1000 Years");
   }
@@ -65,6 +106,44 @@ $(document).keyup(function (e) {
 
     if (value == element[randomNumber]) {
       alert("Correct 😊👌");
+      atomicNumber.splice(randomNumber, 1);
+      element.splice(randomNumber, 1);
+
+      if  (atomicNumber.length == 0 ) {
+        element = [
+          "hydrogen",
+          "helium",
+          "lithium",
+          "beryllium",
+          "boron",
+          "carbon",
+          "nitrogen",
+          "oxygen",
+          "fluorine",
+          "neon",
+          "sodium",
+          "magnesium",
+          "aluminium",
+          "silicon",
+          "phosphorus",
+          "sulphur",
+          "chlorine",
+          "argon",
+          "potassium",
+          "calcium",
+          "scandium",
+          "titanium",
+          "vanadium",
+          "chromium",
+          "manganese",
+          "iron",
+        ];
+        atomicNumber = [
+          1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+          22, 23, 24, 25, 26,
+        ];
+      }
+
       innerNumber = $("#atomic-number").text(atomicNumber[randomNumbers()]);
       document.getElementById("type-name").value = "";
     } else {
@@ -72,3 +151,5 @@ $(document).keyup(function (e) {
     }
   }
 });
+
+
